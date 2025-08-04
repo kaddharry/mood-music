@@ -1,0 +1,43 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MoodMusic</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>MoodMusic 🎵</h1>
+
+    <!-- Select Mood -->
+<!-- Select Mood -->
+<div class="section">
+  <h2>Select Your Mood</h2>
+  <div class="mood-buttons">
+    <button onclick="goToMood('happy')">😊 Happy</button>
+    <button onclick="goToMood('sad')">😢 Sad</button>
+    <button onclick="goToMood('chill')">😌 Chill</button>
+    <button onclick="goToMood('energetic')">⚡ Energetic</button>
+  </div>
+</div>
+
+
+    <!-- Make Playlist -->
+    <div class="section">
+      <h2>Want to create your own playlist?</h2>
+      <a href="playlist.html">
+        <button>Make Playlist</button>
+      </a>
+    </div>
+  </div>
+
+<script>
+  function goToMood(mood) {
+    window.location.href = `mood.html?mood=${mood}`;
+  }
+</script>
+
+</body>
+</html>

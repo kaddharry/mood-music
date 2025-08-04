@@ -1,0 +1,127 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MoodMusic</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+
+  <!-- Inline basic styling using <style> tag -->
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 30px;
+    }
+
+    header, footer {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 30px;
+    }
+
+    button {
+      font-size: 1rem;
+      margin: 5px;
+      padding: 8px 16px;
+    }
+
+    .song-card {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-top: 10px;
+      width: 300px;
+    }
+
+    form input, form select {
+      margin-bottom: 10px;
+      width: 250px;
+      padding: 5px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    hr {
+      margin: 30px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>MoodMusic</h1>
+    <p style="font-size: 1.1rem;">Select your mood, and enjoy the perfect playlist</p>
+    <hr />
+  </header>
+
+  <section id="mood-buttons">
+    <h2>Select Mood</h2>
+    <button>Happy</button>
+    <button>Sad</button>
+    <button>Chill</button>
+    <button>Energetic</button>
+  </section>
+
+  <hr />
+
+  <section id="song-list">
+    <h2>Songs for your mood</h2>
+
+    <!-- Sample song card -->
+    <div class="song-card">
+      <h3>Blinding Lights</h3>
+      <p><strong>Artist:</strong> The Weeknd</p>
+      <p><a href="https://www.youtube.com/watch?v=4NRXx6U8ABQ" target="_blank">Play on YouTube</a></p>
+      <button>Like</button>
+      <button>Delete</button>
+    </div>
+  </section>
+
+  <hr />
+
+  <section id="add-song">
+    <h2>Add a New Song</h2>
+    <form>
+      <label>Title:
+        <input type="text" name="title" />
+      </label>
+
+      <label>Artist:
+        <input type="text" name="artist" />
+      </label>
+
+      <label>Song URL:
+        <input type="text" name="url" />
+      </label>
+
+      <label>Mood:
+        <select name="mood">
+          <option value="happy">Happy</option>
+          <option value="sad">Sad</option>
+          <option value="chill">Chill</option>
+          <option value="energetic">Energetic</option>
+        </select>
+      </label>
+
+      <button type="submit">Add Song</button>
+    </form>
+  </section>
+
+  <hr />
+
+  <footer>
+    <p style="font-style: italic; font-size: 0.9rem;">Made with ❤️ by You | MoodMusic Project</p>
+  </footer>
+</body>
+</html> -->
