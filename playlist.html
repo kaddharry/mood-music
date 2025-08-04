@@ -10,7 +10,6 @@
       margin-top: 20px;
       text-align: center;
     }
-
     #suggestions {
       max-width: 600px;
       margin: 10px auto;
@@ -19,22 +18,18 @@
       border-radius: 8px;
       padding: 10px;
     }
-
     .suggestion-item {
       padding: 8px;
       cursor: pointer;
       border-bottom: 1px solid #ccc;
     }
-
     .suggestion-item:hover {
       background-color: #444;
     }
-
     .playlist {
       margin-top: 30px;
       text-align: center;
     }
-
     iframe {
       width: 100%;
       max-width: 560px;
@@ -65,7 +60,7 @@
   </div>
 
   <script>
-    const apiKey = YOUTUBE_KEY; // Replace with your key
+    const apiKey = "AIzaSyA6hTeOaQIoql_dkCWx7S08xxSGjU4A9OA"; // replace with yours
 
     const searchInput = document.getElementById("searchInput");
     const suggestionsDiv = document.getElementById("suggestions");
@@ -99,13 +94,78 @@
     }
 
     function addToPlaylist(videoId) {
-      const iframe = document.createElement("iframe");
-      iframe.src = `https://www.youtube.com/embed/${videoId}`;
-      iframe.allowFullscreen = true;
-      playlistContainer.appendChild(iframe);
+      let savedPlaylist = JSON.parse(localStorage.getItem("moodmusic_playlist")) || [];
+      savedPlaylist.push(videoId);
+      localStorage.setItem("moodmusic_playlist", JSON.stringify(savedPlaylist));
+      renderPlaylist(savedPlaylist);
       suggestionsDiv.innerHTML = "";
       searchInput.value = "";
     }
+
+    function renderPlaylist(list) {
+  playlistContainer.innerHTML = "";
+  list.forEach((videoId, index) => {
+    const container = document.createElement("div");
+    container.className = "video-card";
+    container.style.position = "relative";
+    container.style.marginBottom = "16px";
+
+    const thumbnail = document.createElement("img");
+    thumbnail.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+    thumbnail.alt = "Video thumbnail";
+    thumbnail.style.width = "100%";
+    thumbnail.style.cursor = "pointer";
+    thumbnail.onclick = () => {
+      playVideo(container, videoId);
+    };
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.innerText = "🗑️";
+    deleteBtn.title = "Delete this video";
+    deleteBtn.style.position = "absolute";
+    deleteBtn.style.top = "8px";
+    deleteBtn.style.right = "8px";
+    deleteBtn.style.background = "#ff4d4d";
+    deleteBtn.style.border = "none";
+    deleteBtn.style.color = "#fff";
+    deleteBtn.style.padding = "4px 8px";
+    deleteBtn.style.cursor = "pointer";
+    deleteBtn.style.borderRadius = "4px";
+    deleteBtn.onclick = () => {
+      deleteVideo(index);
+    };
+
+    container.appendChild(thumbnail);
+    container.appendChild(deleteBtn);
+    playlistContainer.appendChild(container);
+  });
+}
+
+function playVideo(container, videoId) {
+  container.innerHTML = ""; // remove thumbnail and delete button
+  const iframe = document.createElement("iframe");
+  iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+  iframe.allowFullscreen = true;
+  iframe.width = "300";
+  iframe.height = "170";
+  iframe.frameBorder = "0";
+  container.appendChild(iframe);
+}
+
+
+
+function deleteVideo(index) {
+  let savedPlaylist = JSON.parse(localStorage.getItem("moodmusic_playlist")) || [];
+  savedPlaylist.splice(index, 1); // remove video at given index
+  localStorage.setItem("moodmusic_playlist", JSON.stringify(savedPlaylist));
+  renderPlaylist(savedPlaylist); // refresh display
+}
+
+    // On page load, restore playlist
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedPlaylist = JSON.parse(localStorage.getItem("moodmusic_playlist")) || [];
+      renderPlaylist(savedPlaylist);
+    });
   </script>
 </body>
 </html>

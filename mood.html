@@ -35,45 +35,60 @@
       <div id="videoContainer"></div>
     </div>
     <div class="back-button">
+        <h4>YOU CAN MAKE YOUR OWN PLAYLIST BY GOING BACK TO HOME</h4>
       <a href="index.html"><button>Back to Home</button></a>
     </div>
   </div>
 
   <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const mood = urlParams.get("mood");
+  const urlParams = new URLSearchParams(window.location.search);
+  const mood = urlParams.get("mood");
 
-    const moodVideos = {
-      happy: [
-        "https://www.youtube.com/embed/ZbZSe6N_BXs",  // Happy - Pharrell
-        "https://www.youtube.com/embed/fLexgOxsZu0"   // Uptown Funk - Bruno Mars
-      ],
-      sad: [
-        "https://www.youtube.com/embed/hoNb6HuNmU0",  // Let Her Go - Passenger
-        "https://www.youtube.com/embed/RB-RcX5DS5A"   // Someone You Loved - Lewis Capaldi
-      ],
-      chill: [
-        "https://www.youtube.com/embed/5qap5aO4i9A",  // Lo-fi chill
-        "https://www.youtube.com/embed/hHW1oY26kxQ"   // Chillhop Essentials
-      ],
-      energetic: [
-        "https://www.youtube.com/embed/Kx1r5bR8Aac",  // Believer - Imagine Dragons
-        "https://www.youtube.com/embed/IcrbM1l_BoI"   // Don't Let Me Down - Chainsmokers
-      ]
-    };
+  const moodVideos = {
+    happy: [
+      "ZbZSe6N_BXs",  // Happy - Pharrell
+      "fLexgOxsZu0"   // Uptown Funk - Bruno Mars
+    ],
+    sad: [
+      "hoNb6HuNmU0",  // Let Her Go - Passenger
+      "RB-RcX5DS5A"   // Someone You Loved - Lewis Capaldi
+    ],
+    chill: [
+      "5qap5aO4i9A",  // Lo-fi chill
+      "hHW1oY26kxQ"   // Chillhop Essentials
+    ],
+    energetic: [
+      "3brVA5w-aLQ",  // Believer - Imagine Dragons
+      "KO5APXYjLtE"   // Don't Let Me Down - Chainsmokers
+    ]
+  };
 
-    const videoContainer = document.getElementById("videoContainer");
+  const videoContainer = document.getElementById("videoContainer");
 
-    if (moodVideos[mood]) {
-      moodVideos[mood].forEach(link => {
-        const card = document.createElement("div");
-        card.className = "youtube-card";
-        card.innerHTML = `<iframe src="${link}" allowfullscreen></iframe>`;
-        videoContainer.appendChild(card);
-      });
-    } else {
-      videoContainer.innerHTML = "<p>Mood not recognized.</p>";
-    }
-  </script>
+  if (moodVideos[mood]) {
+    moodVideos[mood].forEach(videoId => {
+      const card = document.createElement("div");
+      card.className = "youtube-card";
+
+      card.innerHTML = `
+        <img src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" 
+             style="width:100%;cursor:pointer;border:none;" 
+             onclick="window.open('https://www.youtube.com/watch?v=${videoId}', '_blank')" />
+      `;
+
+      videoContainer.appendChild(card);
+    });
+  } else {
+    videoContainer.innerHTML = "<p>Mood not recognized.</p>";
+  }
+</script>
+
+
 </body>
 </html>
+
+
+
+
+
+

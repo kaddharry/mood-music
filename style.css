@@ -125,3 +125,30 @@ label {
 .song-card:hover {
   transform: scale(1.02);
 }
+
+.search-section input[type="text"] {
+  width: 100%;
+  max-width: 400px;       /* Make it larger */
+  padding: 15px;          /* Bigger padding */
+  font-size: 18px;        /* Larger text */
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;  /* Light gray background */
+  color: #333;                /* Input text color */
+}
+
+/* Placeholder styling */
+.search-section input[type="text"]::placeholder {
+  color: #999;                /* Gray placeholder text */
+  opacity: 1;                 /* Full opacity */
+}
+
+/* Optional: style suggestion dropdown */
+#suggestions {
+  margin-top: 8px;
+  background: #000000;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  max-width: 400px;
+  padding: 10px;
+}
